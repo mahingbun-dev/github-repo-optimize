@@ -39,30 +39,27 @@ gh api "repos/$repo/contents" --jq '.[].name' 2>/dev/null | sort || echo "(读�
 echo
 
 echo "## .github 目录"
-dotgithub="$(gh api "repos/$repo/contents/.github" --jq '.[].name' 2>/dev/null || true)"
-if [[ -z "$dotgithub" ]]; then
-  echo "(无 .github 目录)"
-else
+if dotgithub="$(gh api "repos/$repo/contents/.github" --jq '.[].name' 2>/dev/null)"; then
   printf '%s\n' "$dotgithub"
-  templates="$(gh api "repos/$repo/contents/.github/ISSUE_TEMPLATE" --jq '.[].name' 2>/dev/null || true)"
-  if [[ -n "$templates" ]]; then
+  # gh api 对 404 会把错误 JSON 打到 stdout 且退出码非 0,必须用状态判断,不能只看输出非空。
+  if templates="$(gh api "repos/$repo/contents/.github/ISSUE_TEMPLATE" --jq '.[].name' 2>/dev/null)" && [[ -n "$templates" ]]; then
     echo "ISSUE_TEMPLATE: 有($(printf '%s\n' "$templates" | wc -l | tr -d ' ') 个模板)"
   else
     echo "ISSUE_TEMPLATE: 无"
   fi
-  workflows="$(gh api "repos/$repo/contents/.github/workflows" --jq '.[].name' 2>/dev/null || true)"
-  if [[ -n "$workflows" ]]; then
+  if workflows="$(gh api "repos/$repo/contents/.github/workflows" --jq '.[].name' 2>/dev/null)" && [[ -n "$workflows" ]]; then
     echo "workflows: $(printf '%s' "$workflows" | tr '\n' ' ')"
   else
     echo "workflows: 无"
   fi
+else
+  echo "(无 .github 目录)"
 fi
 echo
 
 echo "## Releases(最近 5 个)"
-releases="$(gh api "repos/$repo/releases?per_page=5" \
-  --jq '.[] | "\(.tag_name)  \(.published_at // "draft")"' 2>/dev/null || true)"
-if [[ -n "$releases" ]]; then
+if releases="$(gh api "repos/$repo/releases?per_page=5" \
+  --jq '.[] | "\(.tag_name)  \(.published_at // "draft")"' 2>/dev/null)" && [[ -n "$releases" ]]; then
   printf '%s\n' "$releases"
 else
   echo "(无 release)"
