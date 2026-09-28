@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Shell syntax
+        run: |
+          bash -n scripts/collect-repo-facts.sh
+          bash -n install.sh
+      - name: Skill payload
+        run: |
+          grep -q '^name: github-repo-optimize$' SKILL.md
+          grep -q '^description:' SKILL.md
+          test -x scripts/collect-repo-facts.sh
+          test -f references/audit-checklist.md
+          test -f references/topics.md

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1280px; height: 640px; overflow: hidden; }
+  body {
+    font-family: -apple-system, "SF Pro Display", "Helvetica Neue", "PingFang SC", sans-serif;
+    color: #e8eef5;
+    background:
+      radial-gradient(900px 420px at 12% -8%, rgba(36, 123, 191, .28), transparent 60%),
+      radial-gradient(700px 380px at 92% 108%, rgba(230, 150, 60, .12), transparent 60%),
+      linear-gradient(135deg, #0b1220 0%, #0e1a2b 55%, #0c1626 100%);
+    position: relative;
+  }
+  .grid {
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(0deg, rgba(255,255,255,.028) 0 1px, transparent 1px 80px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.028) 0 1px, transparent 1px 80px);
+    -webkit-mask-image: radial-gradient(75% 90% at 45% 35%, #000 40%, transparent 100%);
+  }
+  .wrap {
+    position: relative; height: 100%;
+    padding: 66px 72px 58px;
+    display: flex; gap: 56px; align-items: center;
+  }
+  .left { flex: 1.25; min-width: 0; }
+  .eyebrow {
+    font-family: "SF Mono", Menlo, monospace;
+    font-size: 16px; letter-spacing: 4px; color: #58c4dc; font-weight: 600;
+  }
+  h1 {
+    font-family: "SF Mono", Menlo, monospace;
+    font-size: 54px; font-weight: 700; letter-spacing: -1.5px;
+    margin: 18px 0 20px; white-space: nowrap;
+  }
+  h1 .accent { color: #4aa3e0; }
+  .sub { font-size: 24px; line-height: 1.5; color: #b8c7d9; max-width: 640px; }
+  .sub strong { color: #e8eef5; font-weight: 600; }
+  .chips { display: flex; gap: 12px; margin-top: 34px; flex-wrap: wrap; }
+  .chip {
+    font-family: "SF Mono", Menlo, monospace;
+    font-size: 15px; letter-spacing: 1px; color: #9fb4ca;
+    border: 1px solid rgba(122, 160, 200, .35); border-radius: 999px;
+    padding: 9px 18px; white-space: nowrap;
+  }
+  .chip b { color: #58c4dc; font-weight: 600; }
+  .right { flex: .85; }
+  .card {
+    background: rgba(10, 18, 32, .72);
+    border: 1px solid rgba(122, 160, 200, .28);
+    border-radius: 14px; padding: 26px 28px;
+    font-family: "SF Mono", Menlo, monospace; font-size: 15.5px; line-height: 2.05;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .35);
+  }
+  .card .dim { color: #6d8199; }
+  .card .ok { color: #4cc38a; }
+  .card .warn { color: #e6b45a; }
+  .url {
+    position: absolute; right: 72px; bottom: 40px;
+    font-family: "SF Mono", Menlo, monospace;
+    font-size: 15px; letter-spacing: 1px; color: #6d8199;
+  }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="wrap">
+    <div class="left">
+      <div class="eyebrow">ZCODE &middot; CLAUDE CODE &middot; CODEX &mdash; AI-AGENT SKILL</div>
+      <h1>github-repo-<span class="accent">optimize</span></h1>
+      <div class="sub">Audit and polish your repo's <strong>public face</strong> &mdash; topics, README, trust signals &mdash; so developers actually star it.</div>
+      <div class="chips">
+        <div class="chip"><b>audit</b> &rarr; report &rarr; you pick &rarr; apply</div>
+        <div class="chip"><b>scaffold</b> new repos</div>
+        <div class="chip">read-only until you go</div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="card">
+        <div><span class="dim">$</span> collect-repo-facts.sh owner/repo</div>
+        <div><span class="dim">topics</span>&nbsp;&nbsp;10/20 &nbsp;<span class="warn">domain words: 0</span></div>
+        <div><span class="dim">license</span>&nbsp;<span class="ok">MIT</span> &nbsp;<span class="dim">ci</span>&nbsp;<span class="ok">green</span></div>
+        <div><span class="dim">release</span>&nbsp;<span class="warn">none</span> &nbsp;<span class="dim">homepage</span>&nbsp;<span class="warn">empty</span></div>
+        <div><span class="dim">score</span>&nbsp;&nbsp;P0 topics &middot; P1 release &middot; P1 demo</div>
+      </div>
+    </div>
+  </div>
+  <div class="url">github.com/mahingbun-dev/github-repo-optimize</div>
+</body>
+</html>
