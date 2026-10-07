@@ -23,7 +23,7 @@ jobs:
       SKILLHUB_SKIP_WORKSPACE_SKILLS: '1'
       SKILL_DIR: .
       # 打包时排除的仓库元文件（相对 SKILL_DIR；.git/.github 始终排除）
-      STAGE_EXCLUDES: 'README.md README.zh-CN.md'
+      STAGE_EXCLUDES: 'README.md README.zh-CN.md .gitignore LICENSE'
     steps:
       - uses: actions/checkout@v4
         with:
