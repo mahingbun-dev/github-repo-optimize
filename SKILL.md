@@ -1,11 +1,10 @@
 ---
 name: github-repo-optimize
-description: >-
-  GitHub 仓库体检与门面优化:topics 标签、README、description、social preview、LICENSE/CI
-  等信任信号。用于新建仓库打样,或给存量仓库做审计提分,让仓库更容易被开发者发现和 star。
-  Use whenever the user mentions 仓库优化/体检/包装, star 上不去, more stars, README 改写,
-  topics/标签, social preview, making a repo attractive or credible, or is about to
-  open-source a repo — even if they don't say "optimize".
+slug: github-repo-optimize
+displayName: GitHub Repo Optimize
+version: 1.0.0
+summary: GitHub 仓库体检与门面优化，让仓库更容易被开发者发现和 star
+description: GitHub 仓库体检与门面优化：topics 标签、README、description、social preview、LICENSE/CI 等信任信号。用于新建仓库打样，或给存量仓库做审计提分，让仓库更容易被开发者发现和 star。Use whenever the user mentions 仓库优化/体检/包装, star 上不去, more stars, README 改写, topics/标签, social preview, making a repo attractive or credible, or is about to open-source a repo — even if they don't say "optimize".
 ---
 
 # GitHub Repo Optimize
